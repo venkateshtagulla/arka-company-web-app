@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://dharnpt0p4.execute-api.ap-south-2.amazonaws.com/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
       },
     ];
   },
