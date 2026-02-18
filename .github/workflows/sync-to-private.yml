@@ -1,0 +1,19 @@
+name: Sync to Private Repo
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_TOKEN }}
+
+      - name: Push to Private Repo
+        run: |
+          git push https://${{ secrets.SYNC_TOKEN }}@github.com/arka2025-tech/frontend.git main --force
