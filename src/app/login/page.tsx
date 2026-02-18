@@ -48,8 +48,14 @@ export default function LoginPage() {
       const response = isFirstLogin
         ? await authApi.login(email, password, newPassword)
         : await authApi.login(email, password);
+      const raw = response;
 
-      if (!response.success) {
+      const parsed =
+        typeof raw.body === "string"
+          ? JSON.parse(raw.body)
+          : raw.body;
+
+      if (!parsed.success) {
         setError(response.message || "Login failed");
         return;
       }
@@ -59,7 +65,7 @@ export default function LoginPage() {
       //   setIsFirstLogin(true);
       //   return;
       // }
-      const { redirect_url, tokens, admin_id, email: userEmail } = response.data;
+      const { redirect_url, tokens, admin_id, email: userEmail } = parsed.data;
       console.log("response data--------",response.data)
       if (redirect_url) {
         window.open(redirect_url, "_blank");
