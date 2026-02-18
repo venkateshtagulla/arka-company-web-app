@@ -59,12 +59,6 @@ export default function LoginPage() {
         setError(response.message || "Login failed");
         return;
       }
-
-      //const { first_login, tokens, admin_id, email: userEmail } = response.data;
-      // if (first_login) {
-      //   setIsFirstLogin(true);
-      //   return;
-      // }
       const { redirect_url, tokens, admin_id, email: userEmail } = parsed.data;
       console.log("response data--------",response.data)
       if (redirect_url) {
@@ -72,12 +66,12 @@ export default function LoginPage() {
         //window.location.href = redirect_url;
         return;
       }
-      setAuth({
-        accessToken: tokens.AccessToken,
-        refreshToken: tokens.RefreshToken,
-        adminId: admin_id,
-        email: userEmail,
-      });
+      // setAuth({
+      //   accessToken: tokens.AccessToken,
+      //   refreshToken: tokens.RefreshToken,
+      //   adminId: admin_id,
+      //   email: userEmail,
+      // });
 
       router.push("/");
     } catch (err: any) {
