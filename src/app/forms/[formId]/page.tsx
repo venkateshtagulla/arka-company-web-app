@@ -143,8 +143,9 @@ export default function FormDetailsPage({
   };
 
   // Helper function to get status color
-  const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
+  const getStatusColor = (status?: string | null) => {
+    const safeStatus = (status || "").toLowerCase();
+    switch (safeStatus) {
       case "pending":
         return "text-yellow-600";
       case "in_progress":
