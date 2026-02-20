@@ -65,7 +65,7 @@ export default function FormsPage() {
 
     // Filter by closed status
     if (!showClosed) {
-      result = result.filter(form => form.status.toLowerCase() !== 'closed');
+      result = result.filter(form => (form.status || "").toLowerCase() !== 'closed');
     }
 
     // Filter by search query
@@ -73,9 +73,9 @@ export default function FormsPage() {
       const query = searchQuery.toLowerCase();
       result = result.filter((form) => {
         return (
-          form.title.toLowerCase().includes(query) ||
-          (form.description && form.description.toLowerCase().includes(query)) ||
-          form.status.toLowerCase().includes(query)
+          (form.title || "").toLowerCase().includes(query)||
+          (form.description || "").toLowerCase().includes(query) ||
+          (form.status || "").toLowerCase().includes(query)
         );
       });
     }
