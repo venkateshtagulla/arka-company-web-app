@@ -137,10 +137,11 @@ export default function FormDetailsPage({
     setTimeout(() => setShowSuccessModal(false), 2000);
   };
 
-  // Helper function to format status
-  const formatStatus = (status: string) => {
-    return status.charAt(0).toUpperCase() + status.slice(1).replace(/_/g, " ");
-  };
+  // Helper function to format status safely
+const formatStatus = (status?: string | null) => {
+  const safeStatus = status || ""; // fallback to empty string
+  return safeStatus.charAt(0).toUpperCase() + safeStatus.slice(1).replace(/_/g, " ");
+};
 
   // Helper function to get status color
   const getStatusColor = (status?: string | null) => {
