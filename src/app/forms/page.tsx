@@ -115,9 +115,12 @@ export default function FormsPage() {
   };
 
   // Helper function to format status
-  const formatStatus = (status: string) => {
-    return status.charAt(0).toUpperCase() + status.slice(1).replace(/_/g, " ");
-  };
+  const formatStatus = (status?: string | null) => {
+  if(status===null || status===undefined) return ""
+  if(status.length===0) return "";
+  const safeStatus = status || ""; // fallback if null/undefined
+  return safeStatus.charAt(0).toUpperCase() + safeStatus.slice(1).replace(/_/g, " ");
+};
 
   // Helper function to get status color
   const getStatusColor = (status?: string | null) => {
