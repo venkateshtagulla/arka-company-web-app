@@ -315,7 +315,7 @@ const formatStatus = (status?: string | null) => {
           <div>
             <p className="text-xs text-gray-400 mb-1">Status:</p>
             <p className={`text-sm font-medium ${getStatusColor(form.status)}`}>
-              {form.status}
+              {formatStatus(form.status)}
             </p>
           </div>
           <div>
