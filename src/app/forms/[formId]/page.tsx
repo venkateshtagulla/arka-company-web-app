@@ -137,9 +137,9 @@ export default function FormDetailsPage({
     setTimeout(() => setShowSuccessModal(false), 2000);
   };
 
-  // Helper function to format status safely
+  // Safe version of formatStatus
 const formatStatus = (status?: string | null) => {
-  const safeStatus = status || ""; // fallback to empty string
+  const safeStatus = status || ""; // fallback if null/undefined
   return safeStatus.charAt(0).toUpperCase() + safeStatus.slice(1).replace(/_/g, " ");
 };
 
@@ -313,7 +313,7 @@ const formatStatus = (status?: string | null) => {
           <div>
             <p className="text-xs text-gray-400 mb-1">Status:</p>
             <p className={`text-sm font-medium ${getStatusColor(form.status)}`}>
-              {formatStatus(form.status)}
+              {form.status}
             </p>
           </div>
           <div>
