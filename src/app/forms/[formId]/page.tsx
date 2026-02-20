@@ -139,6 +139,7 @@ export default function FormDetailsPage({
 
   // Safe version of formatStatus
 const formatStatus = (status?: string | null) => {
+  if(status===null || status.length===0) return ;
   const safeStatus = status || ""; // fallback if null/undefined
   return safeStatus.charAt(0).toUpperCase() + safeStatus.slice(1).replace(/_/g, " ");
 };
