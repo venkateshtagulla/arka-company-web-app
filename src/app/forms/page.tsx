@@ -306,7 +306,7 @@ export default function FormsPage() {
                             </button>
                           </Link>
 
-                          {form.status.toLowerCase() !== 'closed' && (
+                          {(form.status || "").toLowerCase() !== "closed" && (
                             <button
                               onClick={() => handleDeleteForm(form.form_id, form.title)}
                               className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
